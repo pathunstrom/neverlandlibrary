@@ -1,1 +1,3 @@
-__author__ = 'Patrick'
+from neverlandlibrary import app
+
+app.run(debug=True)
