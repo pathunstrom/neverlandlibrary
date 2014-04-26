@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ story['title'] }}</h2>
+<p><em>{{ story['author']['handle'] }}</em></p>
+{% if story['chapter']['title'] %}
+<h3>{{ story['chapter']['title'] }}</h3>
+{% else %}
+<h3>Chapter {{ story['chapter']['id'] }}</h3>
+{% endif %}
+{{ story['chapter']['text'] }}
+{% if story['chapter']['previous'] %}
+<a href="{{ url_for('display_story', story_id=story['id'], chapter_id=story['chapter']['previous_id']) }}">Previous</a>
+{% else %}
+<span class="inactive">Previous</span>
+{% endif %}
+{% if story['chapter']['next'] %}
+<a href="{{ url_for('display_story', story_id=story['id'], chapter_id=story['chapter']['next_id']) }}">Next</a>
+{% else %}
+<span class="inactive">Next</span>
+{% endif %}
+{% endblock %}
