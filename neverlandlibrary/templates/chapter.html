@@ -9,12 +9,12 @@
 {% endif %}
 {% autoescape False %}{{ story['chapter']['text'] }}{% endautoescape %}
 <div>{% if story['chapter']['previous'] %}
-<a href="{{ url_for('display_story', story_id=story['id'], chapter_id=story['chapter']['previous_id']) }}">Previous</a>
+<a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['previous_id']) }}">Previous</a>
 {% else %}
 <span class="inactive">Previous</span>
 {% endif %}
 {% if story['chapter']['next'] %}
-<a href="{{ url_for('display_story', story_id=story['id'], chapter_id=story['chapter']['next_id']) }}">Next</a>
+<a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['next_id']) }}">Next</a>
 {% else %}
 <span class="inactive">Next</span>
 {% endif %}</div>

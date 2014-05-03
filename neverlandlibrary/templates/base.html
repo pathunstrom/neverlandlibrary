@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {% if title %}
-    <title>{{ title }} | The Neverland Library</title>
-  {% else %}
-    <title>Built by Patrick Thunstrom</title>
-  {% endif %}
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="static/style.css">
+{% if title -%}
+<title>{{ title }} | The Neverland Library</title>
+{% else -%}
+<title>Built by Patrick Thunstrom</title>
+{% endif -%}
+<meta charset="utf-8">
+<link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-  <header>
-    {% if title %}
-      <h1>The Neverland Library &mdash; {{ title }}</h1>
-    {% else %}
-      <h1>Website Title</h1>
-    {% endif %}
-  </header>
-  <nav>
-    <a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('library') }}">Library</a>
-  </nav>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
-  {% block content %}{% endblock %}
-  <footer>
-    <p>Built by Patrick Thunstrom.</p>
-  </footer>
+<header>
+{% if title -%}
+<h1>The Neverland Library &mdash; {{ title -}}</h1>
+{% else -%}
+<h1>Website Title</h1>
+{% endif -%}
+</header>
+<nav>
+<a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('library') }}">Library</a>
+</nav>
+{% with messages = get_flashed_messages() -%}
+{% if messages -%}
+<ul>
+{% for message in messages -%}
+<li>{{ message }}</li>
+{% endfor -%}
+</ul>
+{% endif -%}
+{% endwith -%}
+{% block content -%}{% endblock -%}
+<footer>
+<p>Built by Patrick Thunstrom.</p>
+</footer>
 </body>
 </html>

@@ -2,7 +2,7 @@
 {% block content %}
 <ul>
 {% for story in stories %}
-<li><a href="{{ url_for('display_story', story_id=story['id']) }}">{{ story['title'] }}</a></li>
+<li><a href="{{ url_for('display', story_id=story['id']) }}">{{ story['title'] }}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
