@@ -1,6 +1,12 @@
 {% extends "base.html" %}
+
+{% block nav %}
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('library') }}">Library</a></li>
+<li class="active"><a href="{{ url_for('display', story_id=story['id']) }}">{{ story['title'] }}</a></li>
+{% endblock %}
+
 {% block content -%}
-<h2>{{ story['title'] }}</h2>
 <p><em>{{ story['author']['handle'] }}</em></p>
 {% if 'summary' in story -%}
 <p>{{ story['summary'] }}</p>

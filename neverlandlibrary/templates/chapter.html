@@ -1,21 +1,27 @@
 {% extends "base.html" %}
+
+{% block nav %}
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('library') }}">Library</a></li>
+<li><a href="{{ url_for('display', story_id=story['id']) }}">{{ story['title'] }}</a></li>
+<li><a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['id']) }}">Chapter {{ story['chapter']['id'] }}</a></li>
+{% endblock %}
+
 {% block content %}
-<h2>{{ story['title'] }}</h2>
-<p><em>{{ story['author']['handle'] }}</em></p>
 {% if story['chapter']['title'] %}
 <h3>{{ story['chapter']['title'] }}</h3>
 {% else %}
 <h3>Chapter {{ story['chapter']['id'] }}</h3>
 {% endif %}
 {% autoescape False %}{{ story['chapter']['text'] }}{% endautoescape %}
-<div>{% if story['chapter']['previous'] %}
-<a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['previous_id']) }}">Previous</a>
+<ul class="pager">{% if story['chapter']['previous'] %}
+<li class="previous"><a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['previous_id']) }}">Previous</a></li>
 {% else %}
-<span class="inactive">Previous</span>
+<li class="previous disabled"><a>Previous</a></li>
 {% endif %}
 {% if story['chapter']['next'] %}
-<a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['next_id']) }}">Next</a>
+<li class="next"><a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['next_id']) }}">Next</a></li>
 {% else %}
-<span class="inactive">Next</span>
-{% endif %}</div>
+<li class="next disabled"><a>Next</a></li>
+{% endif %}</ul>
 {% endblock %}

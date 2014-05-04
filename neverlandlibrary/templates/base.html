@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-{% if title -%}
-<title>{{ title }} | The Neverland Library</title>
-{% else -%}
-<title>Built by Patrick Thunstrom</title>
-{% endif -%}
-<meta charset="utf-8">
-<link rel="stylesheet" href="static/style.css">
-</head>
-<body>
-<header>
-{% if title -%}
-<h1>The Neverland Library &mdash; {{ title -}}</h1>
-{% else -%}
-<h1>Website Title</h1>
-{% endif -%}
-</header>
-<nav>
-<a href="{{ url_for('index') }}">Home</a> | <a href="{{ url_for('library') }}">Library</a>
-</nav>
-{% with messages = get_flashed_messages() -%}
-{% if messages -%}
-<ul>
-{% for message in messages -%}
-<li>{{ message }}</li>
-{% endfor -%}
-</ul>
-{% endif -%}
-{% endwith -%}
-{% block content -%}{% endblock -%}
-<footer>
-<p>Built by Patrick Thunstrom.</p>
-</footer>
-</body>
+
+  <head>
+    {% if title -%}
+      <title>{{ title }} &mdash; The Neverland Library</title>
+    {% else -%}
+      <title>The Neverland Library</title>
+    {% endif -%}
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/neverland.css">
+  </head>
+
+  <body>
+
+    <div class="page-header">
+      <h1>The Neverland Library <small>{{ title }}</small></h1>
+    </div>
+
+    <ul class="nav nav-tabs">
+
+      {% block nav %}{% endblock %}
+    </ul>
+
+    <div class="content">
+      {% with messages = get_flashed_messages() -%}
+        <div class="warnings">
+      {% if messages -%}
+        <ul>
+          {% for message in messages -%}
+            <li>{{ message }}</li>
+          {% endfor -%}
+        </ul>
+          {% endif -%}
+        </div>
+      {% endwith -%}
+
+      <div class="content">{% block content -%}{% endblock -%}</div>
+    </div>
+
+    <div class="footer">
+      <p>Built by Patrick Thunstrom.</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+  </body>
 </html>

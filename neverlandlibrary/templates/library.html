@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% block nav %}
+<li><a href="{{ url_for('index') }}">Home</a></li>
+<li class="active"><a href="{{ url_for('library') }}">Library</a></li>
+{% endblock %}
+
 {% block content %}
 <ul>
 {% for story in stories %}

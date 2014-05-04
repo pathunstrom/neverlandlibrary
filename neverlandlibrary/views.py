@@ -6,8 +6,7 @@ from mockdb import *
 
 @app.route('/')
 def index():
-    title = "Home"
-    return render_template("base.html", title=title)
+    return render_template("base.html")
 
 
 @app.route('/library/')
@@ -35,8 +34,20 @@ def display(story_id, chapter_id=0):
         key=operator.itemgetter('id'))
     if chapter_id:
         story['chapter'] = story['chapters'][chapter_id - 1]
-        next_id = chapter_id
-        prev_id = chapter_id - 2
+        next_id = chapter_id + 1
+        prev_id = chapter_id - 1
+
+        try:
+            if next_id - 1 < len(story['chapters']):
+                story['chapter']['next'] = True
+        except IndexError:
+            story['chapter']['next'] = False
+
+        if prev_id > 0:
+            story['chapter']['previous'] = True
+        else:
+            story['chapter']['previous'] = False
+
         story['chapter']['next_id'] = next_id
         story['chapter']['previous_id'] = prev_id
         return render_template("chapter.html", story=story, title=title)
