@@ -2,28 +2,35 @@
 <html>
 
   <head>
-    {% if title -%}
-      <title>{{ title }} &mdash; The Neverland Library</title>
-    {% else -%}
-      <title>The Neverland Library</title>
-    {% endif -%}
+    <title>{% block title %}{% endblock -%}The Neverland Library</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/static/bootstrap.min.css">
     <link rel="stylesheet" href="/static/neverland.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
 
-    <div class="page-header">
-      <h1>The Neverland Library <small>{{ title }}</small></h1>
-    </div>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">The Neverland Library{% block subtitle %}{% endblock -%}</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-tabs">
+              {% block nav %}{% endblock %}
+            </ul>
+        </div>
+        </div>
+      </div>
 
-    <ul class="nav nav-tabs">
-
-      {% block nav %}{% endblock %}
-    </ul>
-
-    <div class="content">
+    <div class="content container">
       {% with messages = get_flashed_messages() -%}
         <div class="warnings">
       {% if messages -%}
@@ -39,8 +46,11 @@
       <div class="content">{% block content -%}{% endblock -%}</div>
     </div>
 
-    <div class="footer">
-      <p>Built by Patrick Thunstrom.</p>
+    <div class="nav navbar-default navbar-fixed-bottom">
+      <div class="container">
+        <p class="navbar-text">Copyright 2014</p>
+        <p class="navbar-text">Built by Patrick Thunstrom.</p>
+      </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
