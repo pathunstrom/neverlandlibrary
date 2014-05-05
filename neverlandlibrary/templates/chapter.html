@@ -4,7 +4,7 @@
 <li><a href="{{ url_for('index') }}">Home</a></li>
 <li><a href="{{ url_for('library') }}">Library</a></li>
 <li><a href="{{ url_for('display', story_id=story['id']) }}">{{ story['title'] }}</a></li>
-<li><a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['id']) }}">Chapter {{ story['chapter']['id'] }}</a></li>
+<li class="active"><a href="{{ url_for('display', story_id=story['id'], chapter_id=story['chapter']['id']) }}">Chapter {{ story['chapter']['id'] }}</a></li>
 {% endblock %}
 
 {% block content %}
