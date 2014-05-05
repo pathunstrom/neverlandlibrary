@@ -1,33 +1,17 @@
-body {
-    margin: auto;
+html, body {
+    padding-top: 25px;
+    height: 100%;
     background-color: #9DC6A0;
-    padding-top: 50px;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0px;
-    height: 2em;
-    background-color: #6EC774;
-    padding: 0;
-    margin: 0;
-}
-
-.page-header {
-    position: absolute;
-    top: 0px;
-    padding: 0px;
-}
-
-.content {
-    background-color: #FFFBFB;
+.heightwrap {
     height: 100%;
 }
 
-.page-header {
-    background-color: #6EC774
-}
-
-.page-header small {
-    color: #978
+.content {
+    font-size: 16px;
+    background-color: #FFFBFB;
+    height: 100%;
+    max-width: 60em;
+    margin: auto;
 }

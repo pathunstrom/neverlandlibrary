@@ -30,18 +30,19 @@
         </div>
       </div>
 
-    <div class="content container">
-      {% with messages = get_flashed_messages() -%}
-        <div class="warnings">
-      {% if messages -%}
-        <ul>
-          {% for message in messages -%}
-            <li>{{ message }}</li>
-          {% endfor -%}
-        </ul>
-          {% endif -%}
-        </div>
-      {% endwith -%}
+    <div class="heightwrap">
+      <div class="container">
+        {% with messages = get_flashed_messages() -%}
+          <div class="warnings">
+            {% if messages -%}
+              <ul>
+                {% for message in messages -%}
+                  <li>{{ message }}</li>
+                {% endfor -%}
+              </ul>
+            {% endif -%}
+          </div>
+        {% endwith -%}</div>
 
       <div class="content">{% block content -%}{% endblock -%}</div>
     </div>
