@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block nav %}
+<li class="active"><a href="{{ url_for('index') }}">Home</a></li>
+<li><a href="{{ url_for('library') }}">Library</a></li>
+{% endblock %}
+
+{% block content %}
+<section>
+<h3>Featured</h3>
+<h4><a href="#">Title</a> <small>author</small></h4>
+<p>This is a sample paragraph for the featured story.</p>
+<p>This is a second sample paragraph for the featured story.</p>
+</section>
+<section>
+  <h2>Announcement</h2>
+  <p>This is the text of an announcement.</p>
+</section>
+{% endblock %}
